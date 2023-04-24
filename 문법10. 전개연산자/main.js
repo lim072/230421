@@ -75,7 +75,7 @@ console.log(arr1);
 console.log(...arr1); // 전개연산자 == spread 펼쳐놓다
 
 
-//저ㅗㄴ개연사자로 객체값을 추가할 수 있습니다
+//전개연사자로 객체값을 추가할 수 있습니다
 const obj = {
     name : "임땡칠",
     age : 15
