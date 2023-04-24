@@ -14,7 +14,7 @@ const arr = ['red', 'green', 'blue'];
 
 const [red, green, blue] = arr;
 // const [a, b, c] = arr;
-//오리지널 배열이 존재하는 상태에서 변숨병을 배열형태로 받고 배열의 이름을
+//오리지널 배열이 존재하는 상태에서 변수명을 배열형태로 받고 배열의 이름을
 //대입해서 배열값을 담기만 합니다. 이때 배열의 순서에 맞춰서 구조를 오픈하고 할당하는 것에 주의
 //배열의 탐색은 인덱스(순서)로 하기때문에 순서에 맞춰서 작성하면 되었지만
 //객체는 탐색을 키값으로 하기 때문에, 배열은 변수를 개발자 임의대로 지정이 가능했지만
@@ -46,21 +46,21 @@ const [red, green, blue] = arr;
 
 
 
-const studentInfo = [
-    {
-        name : '땡칠이',
-        age : 15,
-        isMale : true
-    },{
-        name : '몽이',
-        age : 7,
-        isMale : false
-    },{
-        name : '사랑이',
-        age : 6,
-        isMale : false
-    }
-]
+// const studentInfo = [
+//     {
+//         name : '땡칠이',
+//         age : 15,
+//         isMale : true
+//     },{
+//         name : '몽이',
+//         age : 7,
+//         isMale : false
+//     },{
+//         name : '사랑이',
+//         age : 6,
+//         isMale : false
+//     }
+// ]
 
 //객체배열에서 자료를 탐색할때 (나중에 다시 배우기 에러사항 발생)
 // const name1 = studentInfo[0].name;
@@ -98,4 +98,47 @@ const studentInfo = [
 
 // const MyInfo = (obj) => {`제 이름은 ${obj.name}이고 ${obj.age}살이며 직업은 ${obj.job}입니다`};
 
-// console.log(in1({name : "임땡칠", age : 15, job : '개발자'}));
+// console.log(MyInfo({name : "임땡칠", age : 15, job : '개발자'}));
+
+
+// const MyInfo = (name, age, job, hobby)=>'제이름은 ${name}이고 나이는 ${age}이며 직업은 ${job}입니다 그리고 ${hobby}을 좋아합니다';
+
+// //중괄호{}안에  ``(백틱)으로 사용하게되면 {}때문에 ``이 무시됩니다
+// //''을 {}을 묶으면 인수안에 인수를 넣는 꼴이 되기 때문에 언디파인드가 됩니다
+// console.log(MyInfo('임땡칠', '15', '개발자', '산책'));
+// 실무에서 가장중요한건 협업입니다. 협업에서 걸림돌이 되는것은 무조건 지양해야합니다
+
+//obj란 함수를 호출하는곳에서 인수를 객체로 넣어주는데, 그 넣는 인수 객체를 받아주는
+//매개변수라고 할수 있습니다
+//obj는 변수이고 변수안의 각각의 키값으로 넣어져있는 값들을 끄집어서 각 해당하는 부분에
+//name, age, job 등이 들어가져야 하므로 각각의 값에 obj.name등으로 객체안의 값을 불러
+//와야합니다
+
+
+// const myInfo = (obj) =>`제이름은 ${obj.name}이고 나이는 ${obj.age}이며 직업은 ${obj.job}입니다 그리고 ${obj.hobby}을 좋아합니다`;
+
+// console.log(myInfo({
+//     name : "임땡칠",
+//     age: "15",
+//     job: "개발자",
+//     hobby: "산책"
+// }))
+
+//단점 : 코드의 가독성이 떨어지고, 디폴트파라미터를 넣을수가 없습니다
+
+
+
+const myInfo = ({name, age, job = '무직', hobby}) =>`제이름은 ${name}이고 나이는 ${age}이며 직업은 ${job}입니다 그리고 ${hobby}을 좋아합니다`;
+
+console.log(myInfo({
+    name : "임땡칠",
+    age: "15",
+   
+    hobby: "산책"
+}));
+
+/*
+코드의 가독성을 높이기 위하여 obj 객체를 구조분해할당으로 매개변수자리에 넣어줌으로
+바로 해당 키값을 알수있고, 값을 넣는 구간에도 obj.name 처럼 어렵게가 아닌 직관적인 값을
+넣어줄수 있습니다. 또한 구조분해할당으로 넣는 매개변수자리에 디폴트 파라미터를 넣어줄수도 있습니다
+*/
